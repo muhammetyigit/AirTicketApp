@@ -14,7 +14,6 @@ class PassengerInfoTableViewController: UITableViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
-    
     @IBOutlet weak var departurePicker: UIPickerView!
     @IBOutlet weak var arrivalPicker: UIPickerView!
     
@@ -23,6 +22,12 @@ class PassengerInfoTableViewController: UITableViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBOutlet weak var numberAdultsLabel: UILabel!
+    @IBOutlet weak var numberAdultsStepper: UIStepper!
+    
+    @IBOutlet weak var numberChildrenLabel: UILabel!
+    @IBOutlet weak var numberChildrenStepper: UIStepper!
     
     // MARK: - Properties
     let cities = ["İstanbul", "Ankara", "İzmir", "Antalya", "Bursa", "İzmir", "Antalya", "Trabzon", "Rize", "Erzurum", "Düzce", "Balıkesir"]
@@ -58,6 +63,8 @@ class PassengerInfoTableViewController: UITableViewController {
         }
     }
     
+    var passenger: Passenger?
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,21 +96,24 @@ class PassengerInfoTableViewController: UITableViewController {
         let depature = departureLabel.text!
         let arrival = arrivalLabel.text!
         let date = datePicker.date
+        let adults = Int(numberAdultsStepper.value)
+        let children = Int(numberChildrenStepper.value)
         
-        print("Done button tapped")
-        print("First Name : \(firstName)")
-        print("Last Name  : \(lastName)")
-        print("E-mail     : \(email)")
-        print("From:      : \(depature)")
-        print("To:        : \(arrival)")
-        print("Date       : \(date)")
+        passenger = Passenger(firstName: firstName, lastName: lastName, email: email, fromCity: depature, toCity: arrival, date: date, adults: adults, children: children)
+        PassengerManager.shared.passengers.append(passenger!)
+        
+        performSegue(withIdentifier: "ticket", sender: self)
     }
-    
     
     @IBAction func datePickerTapped(_ sender: UIDatePicker) {
         let date = sender.date
         let formatedDate = dateFormat(with: date)
         dateLabel.text = formatedDate
+    }
+    
+    @IBAction func stepperValuChanged(_ sender: UIStepper) {
+        numberAdultsLabel.text   =  "\(Int(numberAdultsStepper.value))"
+        numberChildrenLabel.text =  "\(Int(numberChildrenStepper.value))"
     }
 }
 
