@@ -17,7 +17,7 @@ It utilizes UIKit components such as UITableView, UIDatePicker, UIPickerView, an
 📅 Flight Date: Custom formatted date from `UIDatePicker`  
 🎫 Ticket UI: Stylish ticket-shaped cells for the flight list  
 🧠 Singleton Pattern: `TicketManager` (or similar) for centralized data handling  
-📁 Structured Architecture**: Organized folders like `Controllers`, `Models`, `Views`  
+📁 Structured Architecture: Organized folders like `Controllers`, `Models`, `Views`  
 🔄 Smooth UX: Dynamic row height and interactive pickers in the table view
 
 ## 📱 Technologies Used
