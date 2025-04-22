@@ -13,7 +13,7 @@ It utilizes UIKit components such as UITableView, UIDatePicker, UIPickerView, an
 - Local data handling with custom models and structures
 
 ## 🛠 App Highlights
-📋 Form UI: Users fill in flight and passenger details with custom `UITableViewCell`s  
+📋 Form UI: Users fill in flight and passenger details with custom `UITableViewCell`  
 📅 Flight Date: Custom formatted date from `UIDatePicker`  
 🎫 Ticket UI: Stylish ticket-shaped cells for the flight list  
 🧠 Singleton Pattern: `TicketManager` (or similar) for centralized data handling  
